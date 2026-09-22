@@ -23,7 +23,6 @@ async def test_counter(dut):
     assert dut.uo_out.value == 0, f"Expected output 0 when OE is low, got {dut.uo_out.value}"
 
     # Test 2: Assert Output Enable and check the post-reset value
-    await FallingEdge(dut.clk)
     dut.uio_in.value = 2  # Binary 10: uio_in[1] = 1, uio_in[0] = 0
     await FallingEdge(dut.clk)
     assert dut.uo_out.value == 1, f"Expected output 1 after reset, got {dut.uo_out.value}"
