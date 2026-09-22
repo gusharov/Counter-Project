@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Your Name
+ * Copyright (c) 2026 Gregory Usharov
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -25,7 +25,8 @@ always @(posedge clk or negedge rst_n) begin
         count <= ui_in;
     end else begin
         count <= count + 1'b1;
-            
+    end
+end
   // All output pins must be assigned. If not used, assign to 0.
   assign uo_out  = uio_in[1] ? count : 8'b0;
   assign uio_out = 0;
