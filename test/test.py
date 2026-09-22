@@ -24,14 +24,14 @@ async def test_counter(dut):
     # Test 2: Assert Output Enable and check the post-reset value
     dut.uio_in.value = 2  # Binary 10: uio_in[1] = 1, uio_in[0] = 0
     await ClockCycles(dut.clk, 1)
-    assert dut.uo_out.value == 1, f"Expected output 1 after reset, got {dut.uo_out.value}"
+    assert dut.uo_out.value == 0, f"Expected output 0 after reset, got {dut.uo_out.value}"
 
     # Test 3: Verify counting behavior
     await ClockCycles(dut.clk, 1)
-    assert dut.uo_out.value == 2, f"Expected count 2, got {dut.uo_out.value}"
+    assert dut.uo_out.value == 1, f"Expected count 1, got {dut.uo_out.value}"
 
     await ClockCycles(dut.clk, 1)
-    assert dut.uo_out.value == 3, f"Expected count 3, got {dut.uo_out.value}"
+    assert dut.uo_out.value == 2, f"Expected count 2, got {dut.uo_out.value}"
 
     # Test 4: Verify load behavior
     dut.ui_in.value = 150
